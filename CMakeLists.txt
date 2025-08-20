@@ -161,7 +161,12 @@ OPTION(EMBREE_MIN_WIDTH "Enables min-width feature to enlarge curve and point th
 # Platform detection and defaults
 ##############################################################
 
-SET(EMBREE_ARM ON)
+IF (APPLE)
+  IF (CMAKE_SYSTEM_NAME STREQUAL "Darwin" AND (CMAKE_SYSTEM_PROCESSOR STREQUAL "arm64" OR CMAKE_OSX_ARCHITECTURES MATCHES "arm64"))
+    MESSAGE(STATUS "Building for Apple silicon")
+    SET(EMBREE_ARM ON)
+  ENDIF()
+ENDIF()
 
 SET(EMBREE_TASKING_SYSTEM "TBB" CACHE STRING "Selects tasking system")
 SET(EMBREE_TBB_COMPONENT "tbb" CACHE STRING "The TBB component/library name.")

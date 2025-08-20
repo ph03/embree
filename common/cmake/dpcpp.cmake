@@ -7,7 +7,7 @@ MACRO(_SET_IF_EMPTY VAR VALUE)
   ENDIF()
 ENDMACRO()
 
-_SET_IF_EMPTY(FLAGS_SSE2  "-msse2")
+_SET_IF_EMPTY(FLAGS_SSE2  "")
 _SET_IF_EMPTY(FLAGS_SSE42 "-msse4.2")
 _SET_IF_EMPTY(FLAGS_AVX   "-mavx")
 _SET_IF_EMPTY(FLAGS_AVX2  "-mf16c -mavx2 -mfma -mlzcnt -mbmi -mbmi2")
